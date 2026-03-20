@@ -1,13 +1,136 @@
 import requests
+import random
+import json
+import os
 
 TOKEN = "8656227637:AAFAceWhP-4n9XFrj1YFPxfHWLTxfBRu0Tk"
 CHAT_ID = "@achadinhosshopeebr4"
 
-url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+# 🔥 SUA VITRINE DE AFILIADO
+VITRINE = "https://collshp.com/l6ucuzrolo235?view=storefront"
 
-res = requests.post(url, data={
-    "chat_id": CHAT_ID,
-    "text": "🚀 TESTE: BOT FUNCIONANDO!"
-})
+# 🔎 PALAVRAS-CHAVE (VARIA AUTOMATICAMENTE)
+KEYWORDS = [
+    "fone bluetooth",
+    "smartwatch",
+    "caixa de som",
+    "led rgb",
+    "teclado gamer",
+    "mouse gamer",
+    "carregador",
+    "mini projetor",
+    "ring light",
+    "câmera wifi"
+]
 
-print(res.text)
+# 🔎 BUSCAR PRODUTOS DA SHOPEE
+def buscar_produtos():
+    keyword = random.choice(KEYWORDS)
+
+    url = "https://shopee.com.br/api/v4/search/search_items"
+
+    params = {
+        "by": "relevancy",
+        "keyword": keyword,
+        "limit": 20,
+        "newest": 0,
+        "order": "desc"
+    }
+
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
+
+    r = requests.get(url, params=params, headers=headers)
+    data = r.json()
+
+    produtos = []
+
+    for item in data.get("items", []):
+        nome = item.get("name")
+        preco = item.get("price", 0) / 100000
+        itemid = item.get("itemid")
+        shopid = item.get("shopid")
+
+        link = f"https://shopee.com.br/product/{shopid}/{itemid}"
+
+        produtos.append({
+            "nome": nome,
+            "preco": preco,
+            "link": link
+        })
+
+    return produtos
+
+# 🔥 FILTRO (SÓ COISAS QUE VENDEM)
+def filtrar(produtos):
+    filtrados = []
+
+    for p in produtos:
+        if 5 < p["preco"] <= 120:
+            filtrados.append(p)
+
+    return filtrados
+
+# 🚫 EVITAR REPETIDOS
+def ja_postado(link):
+    if not os.path.exists("postados.json"):
+        return False
+
+    with open("postados.json", "r") as f:
+        data = json.load(f)
+
+    return link in data
+
+def salvar_postado(link):
+    data = []
+
+    if os.path.exists("postados.json"):
+        with open("postados.json", "r") as f:
+            data = json.load(f)
+
+    data.append(link)
+
+    with open("postados.json", "w") as f:
+        json.dump(data, f)
+
+# 🧠 MENSAGEM QUE CONVERTE
+def gerar_mensagem(p):
+    chamadas = [
+        "🔥 ISSO AQUI TÁ MUITO BARATO",
+        "⚠️ OFERTA RELÂMPAGO",
+        "💸 PREÇO IMPERDÍVEL",
+        "🚨 ACHADINHO TOP"
+    ]
+
+    return f"""{random.choice(chamadas)}
+
+🛒 {p['nome']}
+💰 R${p['preco']:.2f}
+
+👉 {p['link']}
+
+🛍 Mais promoções:
+{VITRINE}
+
+⏰ Corre antes que acabe!
+"""
+
+# 📤 ENVIAR PRO TELEGRAM
+def enviar(msg):
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    requests.post(url, data={
+        "chat_id": CHAT_ID,
+        "text": msg
+    })
+
+# 🚀 EXECUÇÃO PRINCIPAL
+if __name__ == "__main__":
+    enviar("🤖 Buscando achadinhos da Shopee...")
+
+    produtos = buscar_produtos()
+    filtrados = filtrar(produtos)
+
+    enviados = 0
+
+    for p in filtrados:
