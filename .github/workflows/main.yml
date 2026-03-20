@@ -16,4 +16,4 @@ jobs:
 
       - run: pip install requests
 
-      - run: python bot2.py
+      - run: python bot.py
