@@ -20,10 +20,10 @@ KEYWORDS = [
     "carregador",
     "mini projetor",
     "ring light",
-    "câmera wifi"
+    "camera wifi"
 ]
 
-# 🔎 BUSCAR PRODUTOS DA SHOPEE
+# 🔎 BUSCAR PRODUTOS
 def buscar_produtos():
     keyword = random.choice(KEYWORDS)
 
@@ -62,7 +62,7 @@ def buscar_produtos():
 
     return produtos
 
-# 🔥 FILTRO (SÓ COISAS QUE VENDEM)
+# 🔥 FILTRO
 def filtrar(produtos):
     filtrados = []
 
@@ -94,7 +94,7 @@ def salvar_postado(link):
     with open("postados.json", "w") as f:
         json.dump(data, f)
 
-# 🧠 MENSAGEM QUE CONVERTE
+# 🧠 MENSAGEM
 def gerar_mensagem(p):
     chamadas = [
         "🔥 ISSO AQUI TÁ MUITO BARATO",
@@ -116,7 +116,7 @@ def gerar_mensagem(p):
 ⏰ Corre antes que acabe!
 """
 
-# 📤 ENVIAR PRO TELEGRAM
+# 📤 ENVIAR
 def enviar(msg):
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     requests.post(url, data={
@@ -124,13 +124,18 @@ def enviar(msg):
         "text": msg
     })
 
-# 🚀 EXECUÇÃO PRINCIPAL
+# 🚀 EXECUÇÃO
 if __name__ == "__main__":
-    enviar("🤖 Buscando achadinhos da Shopee...")
-
     produtos = buscar_produtos()
     filtrados = filtrar(produtos)
 
     enviados = 0
 
     for p in filtrados:
+        if not ja_postado(p["link"]):
+            enviar(gerar_mensagem(p))
+            salvar_postado(p["link"])
+            enviados += 1
+
+        if enviados >= 3:
+            break
