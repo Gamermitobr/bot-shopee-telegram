@@ -1,17 +1,25 @@
-name: Teste
+name: DEBUG TOTAL
 
 on:
   workflow_dispatch:
 
 jobs:
-  teste:
+  debug:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Baixar código
+        uses: actions/checkout@v4
 
-      - name: Ver arquivos
-        run: ls -la
+      - name: Mostrar arquivos
+        run: |
+          echo "LISTANDO ARQUIVOS:"
+          ls -R
+
+      - name: Ver conteúdo do bot.py
+        run: |
+          echo "CONTEUDO DO BOT:"
+          cat bot.py
 
       - name: Rodar bot
         run: python bot.py
