@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-TOKEN = "SEU_TOKEN"
+TOKEN = "8656227637:AAFAceWhP-4n9XFrj1YFPxfHWLTxfBRu0Tk"
 CHAT_ID = "@seucanal"
 
 def pegar_ofertas():
