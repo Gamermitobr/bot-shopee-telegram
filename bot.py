@@ -1,14 +1,15 @@
 import requests
 
-TOKEN = "8656227637:AAHSMvZd31r_aG70NZG5eyFoYmivjCgx4UA"
-CHAT_ID = 3562877087
+TOKEN = "8656227637:AAG1wxbRplphnglvWrLmpnbwyrEslqlsvKg"
+CHAT_ID = "https://t.me/achadinhosshopeebr4"
+
+msg = "Teste do bot funcionando 🚀"
 
 url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-
-res = requests.post(url, json={
+data = {
     "chat_id": CHAT_ID,
-    "text": "🔥 TESTE DEBUG",
-})
+    "text": msg
+}
 
-print("STATUS:", res.status_code)
-print("RESPOSTA:", res.text)
+r = requests.post(url, data=data)
+print(r.text)
