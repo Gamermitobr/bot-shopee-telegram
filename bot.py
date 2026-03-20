@@ -1,15 +1,10 @@
 import requests
+import time
 
-print("INICIANDO TESTE...")
+TOKEN = "8656227637:AAG1wxbRplphnglvWrLmpnbwyrEslqlsvKg"
+CHAT_ID = "@achadinhosshopeebr4"
+URL = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
-url = "https://api.telegram.org/bot8656227637:AAG1wxbRplphnglvWrLmpnbwyrEslqlsvKg/sendMessage"
-
-params = {
-    "chat_id": "@achadinhosshopeebr4",
-    "text": "🔥 MENSAGEM DIRETA VIA GITHUB 🔥"
-}
-
-r = requests.get(url, params=params)
-
-print("STATUS:", r.status_code)
-print("RESPOSTA:", r.text)
+while True:
+    requests.get(URL, params={"chat_id": CHAT_ID, "text": "🔥 Mensagem automática 🚀"})
+    time.sleep(60)  # envia a cada 60 segundos
