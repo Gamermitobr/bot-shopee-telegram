@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 TOKEN = "8656227637:AAFAceWhP-4n9XFrj1YFPxfHWLTxfBRu0Tk"
-CHAT_ID = "@seucanal"
+CHAT_ID = "3562877087"
 
 def pegar_ofertas():
     url = "https://www.pelando.com.br/grupo/shopee"
