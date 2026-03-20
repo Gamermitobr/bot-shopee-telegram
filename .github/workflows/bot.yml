@@ -1,14 +1,17 @@
-name: Teste Bot
+name: Teste
 
 on:
   workflow_dispatch:
 
 jobs:
-  enviar:
+  teste:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Rodar script
+      - name: Ver arquivos
+        run: ls -la
+
+      - name: Rodar bot
         run: python bot.py
