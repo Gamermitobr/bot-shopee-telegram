@@ -5,9 +5,9 @@ CHAT_ID = "@achadinhosshopeebr4"
 
 url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
-res = requests.post(url, data={
+res = requests.post(url, json={
     "chat_id": CHAT_ID,
-    "text": "🔥 BOT FUNCIONANDO COM TOKEN NOVO"
+    "text": "🔥 TESTE DIRETO JSON",
 })
 
 print(res.text)
