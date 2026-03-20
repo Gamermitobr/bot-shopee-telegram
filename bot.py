@@ -11,3 +11,4 @@ response = requests.post(url, data={
 })
 
 print(response.text)
+print("BOT INICIADO")
