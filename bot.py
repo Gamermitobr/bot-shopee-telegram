@@ -1,22 +1,13 @@
 import requests
 
-print("INICIOU O BOT")
+print("BOT RODANDO AGORA")
 
-TOKEN = "8656227637:AAG1wxbRplphnglvWrLmpnbwyrEslqlsvKg"
-CHAT_ID = "@achadinhosshopeebr4"
+response = requests.get(
+    "https://api.telegram.org/bot8656227637:AAG1wxbRplphnglvWrLmpnbwyrEslqlsvKg/sendMessage",
+    params={
+        "chat_id": "@achadinhosshopeebr4",
+        "text": "🔥 TESTE DIRETO DO GITHUB 🔥"
+    }
+)
 
-url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-
-try:
-    response = requests.post(url, data={
-        "chat_id": CHAT_ID,
-        "text": "Mensagem enviada pelo GitHub 🚀"
-    })
-
-    print("STATUS:", response.status_code)
-    print("RESPOSTA:", response.text)
-
-except Exception as e:
-    print("ERRO:", e)
-
-print("FIM DO BOT")
+print(response.text)
