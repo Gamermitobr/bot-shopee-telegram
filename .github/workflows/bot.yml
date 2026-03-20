@@ -1,0 +1,24 @@
+name: Enviar Telegram
+
+on:
+  workflow_dispatch:
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Testar Python
+        run: python --version
+
+      - name: Criar script na hora
+        run: |
+          echo 'import requests' > bot.py
+          echo 'print("RODANDO NO GITHUB")' >> bot.py
+          echo 'requests.get("https://api.telegram.org/bot8656227637:AAG1wxbRplphnglvWrLmpnbwyrEslqlsvKg/sendMessage", params={"chat_id":"@achadinhosshopeebr4","text":"🔥 FUNCIONOU GITHUB 🔥"})' >> bot.py
+
+      - name: Executar script
+        run: python bot.py
