@@ -7,7 +7,8 @@ url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
 res = requests.post(url, json={
     "chat_id": CHAT_ID,
-    "text": "🔥 TESTE DIRETO JSON",
+    "text": "🔥 TESTE DEBUG",
 })
 
-print(res.text)
+print("STATUS:", res.status_code)
+print("RESPOSTA:", res.text)
