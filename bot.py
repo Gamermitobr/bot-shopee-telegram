@@ -1,6 +1,15 @@
-print("🔥 SE VOCÊ ESTÁ VENDO ISSO, O SCRIPT RODOU 🔥")
+import requests
 
-import time
-time.sleep(10)
+print("INICIANDO TESTE...")
 
-print("FINAL DO SCRIPT")
+url = "https://api.telegram.org/bot8656227637:AAG1wxbRplphnglvWrLmpnbwyrEslqlsvKg/sendMessage"
+
+params = {
+    "chat_id": "@achadinhosshopeebr4",
+    "text": "🔥 MENSAGEM DIRETA VIA GITHUB 🔥"
+}
+
+r = requests.get(url, params=params)
+
+print("STATUS:", r.status_code)
+print("RESPOSTA:", r.text)
