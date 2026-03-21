@@ -1,7 +1,14 @@
-  # bot.py
-  import os, requests
-  TOKEN = os.getenv("8656227637:AAG1wxbRplphnglvWrLmpnbwyrEslqlsvKg")
-  CHAT_ID = os.getenv("@achadinhosshopeebr4")
-  URL = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-  requests.get(URL, params={"chat_id": CHAT_ID, "text": "🔥 Mensagem automática 🚀"})
-   print("Resposta Telegram:", resp.json())
+import os
+import requests
+
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+payload = {
+    "chat_id": CHAT_ID,
+    "text": "🔥 Teste do GitHub Actions funcionando!"
+}
+
+resp = requests.post(url, data=payload)
+print("Resposta Telegram:", resp.json())
