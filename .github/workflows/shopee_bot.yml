@@ -1,0 +1,45 @@
+# .github/workflows/shopee_bot.yml
+name: Shopee Deals Telegram Bot
+
+on:
+  schedule:
+    # Roda a cada 6 horas. Ajuste conforme sua necessidade.
+    # Exemplo: 0 0,6,12,18 * * * (às 0h, 6h, 12h, 18h UTC)
+    # Veja a sintaxe cron em: https://crontab.guru/
+    - cron: '0 */6 * * *' 
+  workflow_dispatch:
+    # Permite rodar manualmente o workflow na aba "Actions" do GitHub
+
+jobs:
+  scrape_and_send:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9' # Ou a versão que você preferir
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install nest_asyncio # Necessário para rodar asyncio.run em alguns contextos
+
+    - name: Scrape Shopee deals and send to Telegram
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        SHOPEE_URL: "https://shopee.com.br/Ofertas-do-Dia-cat.11048895.11048906" # Ou uma URL de sua escolha
+      run: |
+        # Navega para a pasta bot
+        cd bot
+        
+        # Executa o scraper para coletar ofertas e salvar em deals.json
+        python scraper.py
+        
+        # Executa o sender para enviar as ofertas para o Telegram
+        python telegram_sender.py
