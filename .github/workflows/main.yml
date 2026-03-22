@@ -1,6 +1,5 @@
-- name: Run bot
-  env:
-    TELEGRAM_BOT_TOKEN: ${{ secrets.1946745917:AAFdIIPJ6jgs_tBlgdDyYxtZxztMs7aR9uk }}
-    TELEGRAM_CHAT_ID: ${{ secrets.https://t.me/achadinhosshopeebr4 }}
-  run: |
-    python bot.py
+      - name: Run bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}   # ← puxa a secret
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}       # ← puxa a secret
+        run: python bot.py
