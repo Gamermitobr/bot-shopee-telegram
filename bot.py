@@ -1,14 +1,9 @@
-import os
-import requests
+import os, requests
 
-TOKEN = "8656227637:AAH4qVemew_e6O55Y2yc48x-Ko9eh8Ad-BI"  # teu token
-CHAT_ID = -1003562877087  # <-- canal
+TOKEN = os.environ["TELEGRAM_TOKEN"]  # vem do secret
+CHAT_ID = os.environ["TELEGRAM_CHAT"] # ex: -1003562877087
 
-def main():
-    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-    payload = {"chat_id": CHAT_ID, "text": "teste do Actions"}
-    r = requests.post(url, data=payload)
-    print(r.json())
-
-if __name__ == "__main__":
-    main()
+msg = "teste de ofertas"
+url = f"https://api.telegram.org/bot{8656227637:AAH4qVemew_e6O55Y2yc48x-Ko9eh8Ad-BI}/sendMessage"
+r = requests.post(url, json={"chat_id": CHAT_ID, "text": msg})
+print(r.status_code, r.json())
