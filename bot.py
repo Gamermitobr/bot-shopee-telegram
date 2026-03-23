@@ -1,7 +1,7 @@
 import os
 import requests
 
-TOKEN = os.getenv("TELEGRAM_TOKEN")  # coloca o token nos Secrets também
+TOKEN = os.getenv("8656227637:AAH4qVemew_e6O55Y2yc48x-Ko9eh8Ad-BI")  # coloca o token nos Secrets também
 CHAT_ID = -1003562877087  # <-- teu canal
 
 def main():
