@@ -1,10 +1,14 @@
 import os
 import requests
 
-TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+TOKEN = os.getenv("TELEGRAM_TOKEN")  # coloca o token nos Secrets também
+CHAT_ID = -1003562877087  # <-- teu canal
 
-url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-payload = {"chat_id": CHAT_ID, "text": "🔧 Teste final do bot"}
-resp = requests.post(url, data=payload)
-print("Resposta Telegram:", resp.json())
+def main():
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    payload = {"chat_id": CHAT_ID, "text": "teste do Actions"}
+    r = requests.post(url, data=payload)
+    print(r.json())
+
+if __name__ == "__main__":
+    main()
