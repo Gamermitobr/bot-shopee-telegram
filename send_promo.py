@@ -5,7 +5,7 @@ import os
 # Pega o token e o ID do canal das variáveis de ambiente.
 # Isso é crucial para a segurança e para que o GitHub Actions funcione.
 BOT_TOKEN = os.environ.get("8656227637:AAH4qVemew_e6O55Y2yc48x-Ko9eh8Ad-BI")
-CHANNEL_ID = os.environ.get("TELEGRAM_CHANNEL_ID")
+CHANNEL_ID = os.environ.get("-1003562877087")
 
 # Sua mensagem de promoção
 PROMOTION_TEXT = "🔔 Novidades! Nossas promoções frescas acabaram de chegar! 🎁"
