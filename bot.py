@@ -2,7 +2,7 @@
             import time
             import requests
 
-            BOT_TOKEN = "SEU_TOKEN_DO_BOT" # Substitua pelo seu token
+            BOT_TOKEN = "8656227637:AAH4qVemew_e6O55Y2yc48x-Ko9eh8Ad-BI" # Substitua pelo seu token
             CHANNEL_ID = "-1003562877087" # O ID do seu canal
             PROMOTION_TEXT = "⚡️ Nova promoção imperdível! Confira agora! ⚡️" # Sua mensagem
 
