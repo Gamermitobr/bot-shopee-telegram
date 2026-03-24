@@ -1,0 +1,30 @@
+name: Enviar Promocao Telegram
+
+on:
+  schedule:
+    # A cada 6 horas. Ajuste '0 */6 * * *' para o horário desejado em UTC.
+    # Ex: '0 10 * * *' para todo dia às 10:00 UTC.
+    # Ex: '0 12,18 * * *' para todo dia às 12:00 e 18:00 UTC.
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Permite que você execute o workflow manualmente da interface do GitHub
+
+jobs:
+  send_promo:
+    runs-on: ubuntu-latest # O sistema operacional onde o job vai rodar
+    steps:
+    - uses: actions/checkout@v4 # Clona seu repositório
+    - name: Configurar Python
+      uses: actions/setup-python@v5 # Configura o ambiente Python
+      with:
+        python-version: '3.9' # Use a versão do Python que você preferir
+
+    - name: Instalar dependências
+      run: pip install requests # Instala a biblioteca requests
+
+    - name: Enviar Mensagem de Promocao
+      run: python send_promo.py # Executa seu script Python
+      env:
+        # Define as variáveis de ambiente que seu script vai usar.
+        # Os valores vêm dos Secrets do seu repositório (próximo passo).
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
