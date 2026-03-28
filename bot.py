@@ -4,7 +4,7 @@ import os
 
 TOKEN = os.getenv("8276947745:AAFwt9r7CnjGkzx_aNiYmiwf6B0QbDZ_9iA")
 CHAT_ID = os.getenv("https://t.me/fftechsegredo")
-RSS_URL = os.getenv("RSS_URL")
+RSS_URL = os.getenv("https://www.youtube.com/feeds/videos.xml?channel_id=UCB0m5QfGQ0lF3ZVn9F0t9rA")
 
 ARQUIVO = "ultimo.txt"
 
