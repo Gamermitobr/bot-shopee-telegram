@@ -2,8 +2,8 @@ import feedparser
 import requests
 import os
 
-TOKEN = os.getenv("TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+TOKEN = os.getenv("8276947745:AAFwt9r7CnjGkzx_aNiYmiwf6B0QbDZ_9iA")
+CHAT_ID = os.getenv("https://t.me/fftechsegredo")
 RSS_URL = os.getenv("RSS_URL")
 
 ARQUIVO = "ultimo.txt"
