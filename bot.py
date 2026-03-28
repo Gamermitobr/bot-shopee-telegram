@@ -2,7 +2,7 @@ import feedparser
 import requests
 import os
 
-TOKEN = os.getenv("8276947745:AAFwt9r7CnjGkzx_aNiYmiwf6B0QbDZ_9iA")
+TOKEN = os.getenv("8276947745:AAFwt9r7CnjGkzx_aNiYmiwf6B0QbDZ_9iA")  # ou coloca direto o token aqui
 CHAT_ID = "@fftechsegredo"
 RSS_URL = "https://www.youtube.com/feeds/videos.xml?channel_id=UCB0m5QfGQ0lF3ZVn9F0t9rA"
 
