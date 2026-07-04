@@ -1,0 +1,9 @@
+name: Bot Shopee Telegram
+on: workflow_dispatch
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Manda msg
+        run: |
+          curl "https://api.telegram.org/bot1946745917:AAFdIIPJ6jgs_tBlgdDyYxtZxztMs7aR9uk/sendMessage?chat_id=@robinairdraktutoriais&text=OFERTA%20RELAMPAGO%20-%20CHURRASQUEIRA"
