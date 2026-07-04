@@ -4,6 +4,10 @@ jobs:
   enviar:
     runs-on: ubuntu-latest
     steps:
-      - name: Manda msg
+      - name: Manda oferta pro Telegram
         run: |
-          curl "https://api.telegram.org/bot1946745917:AAFdIIPJ6jgs_tBlgdDyYxtZxztMs7aR9uk/sendMessage?chat_id=@robinairdraktutoriais&text=OFERTA%20RELAMPAGO%20-%20CHURRASQUEIRA"
+          curl -X POST "https://api.telegram.org/bot${{ secrets.TOKEN }}/sendMessage" \
+          -d chat_id=@robinairdraktutoriais \
+          -d text="OFERTA RELÂMPAGO - CHURRASQUEIRA PORTÁTIL É DESMONTÁVEL COM GRELHA
+          
+          LINK DO PRODUTO : https://s.shopee.com.br/6ffHxillyX"
