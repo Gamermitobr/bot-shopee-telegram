@@ -4,10 +4,32 @@ jobs:
   enviar:
     runs-on: ubuntu-latest
     steps:
-      - name: Manda oferta pro Telegram
+      - name: Oferta 1 - Churrasqueira
         run: |
           curl -X POST "https://api.telegram.org/bot${{ secrets.TOKEN }}/sendMessage" \
           -d chat_id=@robinairdraktutoriais \
-          -d text="OFERTA RELÂMPAGO - CHURRASQUEIRA PORTÁTIL É DESMONTÁVEL COM GRELHA
+          -d text="OFERTA RELÂMPAGO - CHURRASQUEIRA PORTÁTIL
           
-          LINK DO PRODUTO : https://s.shopee.com.br/6ffHxillyX"
+          LINK: https://s.shopee.com.br/6ffHxillyX"
+      
+      - name: Espera 3 segundos
+        run: sleep 3
+      
+      - name: Oferta 2 - Air Fryer
+        run: |
+          curl -X POST "https://api.telegram.org/bot${{ secrets.TOKEN }}/sendMessage" \
+          -d chat_id=@robinairdraktutoriais \
+          -d text="OFERTA DO DIA - AIR FRYER 4L
+          
+          LINK: https://s.shopee.com.br/exemplo2"
+      
+      - name: Espera 3 segundos
+        run: sleep 3
+        
+      - name: Oferta 3 - Fone Bluetooth
+        run: |
+          curl -X POST "https://api.telegram.org/bot${{ secrets.TOKEN }}/sendMessage" \
+          -d chat_id=@robinairdraktutoriais \
+          -d text="PROMO - FONE BLUETOOTH 
+          
+          LINK: https://s.shopee.com.br/exemplo3"
