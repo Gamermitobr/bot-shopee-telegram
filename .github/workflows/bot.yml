@@ -3,7 +3,7 @@ name: Bot Shopee Telegram
 on:
   schedule:
     - cron: "0 * * * *"  # roda a cada 1 hora
-  workflow_dispatch:     # botão manual
+  workflow_dispatch:     # botão manual pra testar
 
 jobs:
   run-bot:
@@ -19,7 +19,7 @@ jobs:
           node-version: "18"
 
       - name: Instalar dependências
-        run: npm install node-fetch telegraf
+        run: npm install node-fetch@2
 
       - name: Rodar bot
         run: node bot.js
