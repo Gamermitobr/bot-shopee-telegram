@@ -1,6 +1,10 @@
 const fetch = require("node-fetch");
-
 const TOKEN = process.env.TOKEN;
+
+console.log("Token existe?", TOKEN ? "SIM" : "NÃO"); // Linha de debug
+console.log("Tamanho do token:", TOKEN?.length); // Tem que dar ~46
+
+// resto do seu código...
 
 // canais
 const canais = [
@@ -56,4 +60,6 @@ async function rodar() {
   }
 }
 
-rodar();
+rodar().catch(err => {
+    console.error("ERRO GERAL:", err);
+});
