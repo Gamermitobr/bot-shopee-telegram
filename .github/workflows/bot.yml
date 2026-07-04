@@ -2,8 +2,8 @@ name: Bot Shopee Telegram
 
 on:
   schedule:
-    - cron: "0 * * * *"  # roda a cada 1 hora
-  workflow_dispatch:     # botão manual pra testar
+    - cron: "0 0 * * *"  # roda a cada 1 hora
+  workflow_dispatch:
 
 jobs:
   run-bot:
