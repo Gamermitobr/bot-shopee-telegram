@@ -19,17 +19,17 @@ jobs:
         run: |
           curl -X POST "https://api.telegram.org/bot${{ secrets.TOKEN }}/sendMessage" \
           -d chat_id=@robinairdraktutoriais \
-          -d text="OFERTA DO DIA - AIR FRYER 4L
+          -d text="FONE DE OUVIDO BLUETOOTH 5.1 M10
           
-          LINK: https://s.shopee.com.br/exemplo2"
+          LINK: https://s.shopee.com.br/40eensju9W"
       
       - name: Espera 3 segundos
         run: sleep 3
         
-      - name: Oferta 3 - Fone Bluetooth
+      - name: Oferta 3 - CARREGADOR DE BATERIA AUTOMOTIVO INTELIGENTE 12V
         run: |
           curl -X POST "https://api.telegram.org/bot${{ secrets.TOKEN }}/sendMessage" \
           -d chat_id=@robinairdraktutoriais \
-          -d text="PROMO - FONE BLUETOOTH 
+          -d text="PROMO - CARREGADOR DE BATERIA 12V
           
-          LINK: https://s.shopee.com.br/exemplo3"
+          LINK: https://s.shopee.com.br/5q6IzPrRmw"
