@@ -2,7 +2,7 @@ name: Bot Shopee Telegram
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # roda a cada 1 hora
+    - cron: "0 0 * * *"  # roda toda hora cheia UTC
   workflow_dispatch:
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
       - name: Instalar Node
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20" # v4 já usa Node 20, some o aviso
 
       - name: Instalar dependências
         run: npm install node-fetch@2
