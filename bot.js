@@ -5,7 +5,7 @@ const TOKEN = process.env.TOKEN;
 // canais
 const canais = [
   "@robinairdraktutoriais",
-  "@canal2"
+  "@afiliadosshopeebrl"
 ];
 
 // produtos
