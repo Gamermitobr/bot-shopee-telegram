@@ -1,27 +1,27 @@
 name: Bot Shopee Telegram
 
 on:
-schedule:
-- cron: "0 * * * *"  # roda a cada 1 hora
-workflow_dispatch:     # botão manual
+  schedule:
+    - cron: "0 * * * *"  # roda a cada 1 hora
+  workflow_dispatch:     # botão manual
 
 jobs:
-run-bot:
-runs-on: ubuntu-latest
+  run-bot:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
 
-steps:
-  - name: Baixar código
-    uses: actions/checkout@v3
+      - name: Instalar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
 
-  - name: Instalar Node
-    uses: actions/setup-node@v3
-    with:
-      node-version: "18"
+      - name: Instalar dependências
+        run: npm install node-fetch telegraf
 
-  - name: Instalar dependências
-    run: npm install node-fetch
-
-  - name: Rodar bot
-    run: node bot.js
-    env:
-      TOKEN: ${{ secrets.TOKEN }}
+      - name: Rodar bot
+        run: node bot.js
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
